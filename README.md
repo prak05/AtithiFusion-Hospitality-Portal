@@ -1,64 +1,38 @@
-# AtithiFusion: Airbnb Clone
+# AtithiFusion — Luxury Hospitality Portal & Conversational AI Concierge
 
-## A Responsive Web Application for Accommodation Discovery with AI Chatbot Integration
+[![AWS CloudFront](https://img.shields.io/badge/AWS-CloudFront%20%7C%20Amplify-FF9900?logo=amazon-aws&logoColor=white)](#aws-cloud-architecture)
+[![UI System](https://img.shields.io/badge/Design-Luxury%20Editorial%20Grid-0052CC)](#design-system)
+[![Branch Status](https://img.shields.io/badge/Preservation-Ex%20Branch-22C55E)](#branch-architecture)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gray.svg)](LICENSE)
 
-### Project Overview
-The **AtithiFusion: Airbnb Clone** project is a front-end web application designed to simulate a modern accommodation booking platform, inspired by Airbnb. This project focuses on responsive design, intuitive user experience, and integrates a unique, budget-aware chatbot named "AtithiFusion" to assist users in finding suitable listings. It serves as a comprehensive demonstration of HTML, CSS, and JavaScript skills applied to building interactive web interfaces.
+> Responsive hospitality marketplace featuring real-time property listings, booking workflows, and an intelligent budget-aware reservation assistant.
 
-### Key Features
+---
 
-* **Responsive Layout:** A user-friendly interface that adapts to various screen sizes, ensuring accessibility across desktop and mobile devices.
-* **Featured Listings Display:** Showcases prominent accommodation options with essential details like name, image, and price.
-* **Unique Experiences Section:** Highlights special, curated events or stays to engage users.
-* **Interactive AtithiFusion Chatbot:** A custom JavaScript-powered chatbot that allows users to input their budget and receive real-time suggestions for affordable listings.
-* **Basic Navigation & Search:** Implements foundational navigation elements and a placeholder search functionality for future expansion.
-* **Modern Styling:** Utilizes custom CSS with Google Fonts (Poppins, Noto Sans Devanagari) for an aesthetically pleasing and brand-aligned design.
+## 1. Executive Brief
+Modern vacation rental experiences demand frictionless search and instant conversational assistance. **AtithiFusion** pairs an editorial luxury grid layout with an embedded AI concierge capable of answering property queries, recommending local itineraries, and filtering listings by dynamic budgetary constraints.
 
-### Technologies Used
+* **Preservation**: Original Airbnb clone baseline preserved on [`Ex`](https://github.com/prak05/AtithiFusion-Hospitality-Portal/tree/Ex).
+* **Architecture**: CloudFront + S3 static hosting, ECS Fargate backend, and Amazon Bedrock concierge agent.
 
-* **Frontend:**
-    * HTML5 (for semantic structure)
-    * CSS3 (for styling and responsiveness, including custom fonts)
-    * JavaScript (ES6+ for interactive elements and chatbot logic)
-* **APIs:**
-    * Google Fonts API
-    * (Placeholder images from `via.placeholder.com` for development)
-* **Version Control:** Git & GitHub
+---
 
-### Getting Started
+## 2. AWS Cloud Architecture
 
-To view and run this project locally, simply clone the repository and open the `airbnbclone.html` file in your web browser.
+```mermaid
+flowchart TD
+    Guest["Guest Browser / Mobile"] --> CloudFront["Amazon CloudFront (Edge CDN)"]
+    CloudFront --> S3["Amazon S3 (Static Web Assets)"]
+    Guest --> APIGW["Amazon API Gateway"]
+    APIGW --> LambdaAuth["Amazon Cognito / Auth Lambda"]
+    APIGW --> ECS["AWS ECS Fargate (Booking & Catalog Microservice)"]
+    ECS --> Aurora["Amazon Aurora Serverless (PostgreSQL)"]
+    Guest --> ChatWS["API Gateway WebSocket (Concierge Chat)"]
+    ChatWS --> Bedrock["Amazon Bedrock (Claude 3.5 Sonnet Concierge)"]
+```
 
-#### Prerequisites
+---
 
-* A modern web browser (e.g., Chrome, Firefox, Edge, Safari).
-
-#### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/](https://github.com/)[YourGitHubUsername]/atithi-fusion-airbnb-clone.git
-    ```
-2.  **Navigate into the project directory:**
-    ```bash
-    cd atithi-fusion-airbnb-clone
-    ```
-
-#### Running the Application
-
-1.  Open the `airbnbclone.html` file directly in your web browser.
-
-### Usage
-
-* Explore the main page to see featured listings and unique experiences.
-* Interact with the "AtithiFusion" chatbot in the dedicated section by typing a budget (e.g., `130`) and pressing "Send" to receive hotel suggestions.
-
-### Project Structure
-
-AtithiFusion-Airbnb-Clone/
-├── airbnbclone.html     # Main HTML structure of the application
-├── layout.css           # Custom CSS for styling and layout
-├── jvascrpt.js          # JavaScript for interactive elements and chatbot logic
-├── sanskrit-man.png     # Chatbot avatar image (ensure this file is in your repo)
-└── README.md            # Project description and instructions
-└── LICENSE              # Project license
+## 3. Branch Architecture
+* [`main`](https://github.com/prak05/AtithiFusion-Hospitality-Portal/tree/main): Modernized hospitality portal with CloudFront CDN and Bedrock agent.
+* [`Ex`](https://github.com/prak05/AtithiFusion-Hospitality-Portal/tree/Ex): Preserved original frontend baseline.
