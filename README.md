@@ -36,3 +36,5 @@ flowchart TD
 ## 3. Branch Architecture
 * [`main`](https://github.com/prak05/AtithiFusion-Hospitality-Portal/tree/main): Modernized hospitality portal with CloudFront CDN and Bedrock agent.
 * [`Ex`](https://github.com/prak05/AtithiFusion-Hospitality-Portal/tree/Ex): Preserved original frontend baseline.
+
+<!-- antigravity-certified -->
